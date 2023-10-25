@@ -24,6 +24,7 @@ Application.prototype.initA4 = function () {
  // this.noteverif = ["A","G"]; // Liste des notes à vérifier
   this.noteverif = this.tracks.tracks[0].chords; // Liste des notes à vérifier
   console.log("notes à vérifier", this.noteverif);
+  
 };
 
 Application.prototype.start = function () {
@@ -120,6 +121,39 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
     $noteHistoryList.appendChild($noteItem);
   });
   this.index = index; // Met à jour l'index de la note à vérifier
+  
+};
+
+Application.prototype.updateNoteVerif = function () {
+  const $notesVerifyList = document.getElementById("notes-verify-list");
+if ($notesVerifyList) {
+  $notesVerifyList.innerHTML = ""; // Efface l'affichage actuel
+  // Maintenant, vous pouvez ajouter de nouveaux éléments
+} else {
+  console.error("Element note-history-list not found.");
+}
+
+let index = this.index; // Utilisez this.index pour accéder à l'index
+
+
+  // Parcourez l'historique des notes et affichez-les
+  this.noteverif.forEach((note) => {
+    const $noteItem = document.createElement("div");
+    $noteItem.className = "note-item";
+    $noteItem.innerHTML = `<span>${note}</span> `;
+    if (this.noteverif[index] === note) {
+      // Si la note correspond à celle dans noteverif, affichez-la en vert
+      $noteItem.classList.add("active");
+      console.log("index", index);
+      $notesVerifyList.appendChild($noteItem);
+    }
+    else {
+      console.log("index", index);
+      $notesVerifyList.appendChild($noteItem);
+
+    }
+  });
+  
 };
 
 Application.prototype.update = function (note) {
@@ -135,6 +169,7 @@ this.noteHistory.push({
 });
 
 // Mettre à jour l'affichage de l'historique
+this.updateNoteVerif();
 this.updateNoteHistory();
 };
 
