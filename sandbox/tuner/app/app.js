@@ -1,4 +1,6 @@
 const Application = function () {
+  this.tracks = new Tracks(".tracks")
+  console.log("tracks", this.tracks);
   this.initA4();
   this.tuner = new Tuner(this.a4);
   this.notes = new Notes(".notes", this.tuner);
@@ -19,7 +21,9 @@ Application.prototype.initA4 = function () {
   this.$a4 = document.querySelector(".a4 span");
   this.a4 = parseInt(localStorage.getItem("a4")) || 440;
   this.$a4.innerHTML = this.a4;
-  this.noteverif = ["A","G"]; // Liste des notes à vérifier
+ // this.noteverif = ["A","G"]; // Liste des notes à vérifier
+  this.noteverif = this.tracks.tracks[0].chords; // Liste des notes à vérifier
+  console.log("notes à vérifier", this.noteverif);
 };
 
 Application.prototype.start = function () {
