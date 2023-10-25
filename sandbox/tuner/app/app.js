@@ -5,6 +5,7 @@ const Application = function () {
   this.meter = new Meter(".meter");
   this.frequencyBars = new FrequencyBars(".frequency-bars");
   this.noteHistory = []; // Ajout de l'historique des notes détectées
+  this.index = 0; // Index de la note à vérifier
   this.update({
     name: "A",
     frequency: this.a4,
@@ -66,6 +67,14 @@ Application.prototype.start = function () {
   document.querySelector(".auto input").addEventListener("change", () => {
     this.notes.toggleAutoMode();
   });
+
+  const resetButton = document.getElementById("resetButton");
+
+resetButton.addEventListener("click", function () {
+  self.index = 0; // Réinitialise l'index de la note à vérifier
+  console.log("réinitialisation de index", self.index);
+});
+
 };
 
 Application.prototype.updateFrequencyBars = function () {
@@ -85,8 +94,8 @@ if ($noteHistoryList) {
   console.error("Element note-history-list not found.");
 }
 
+let index = this.index; // Utilisez this.index pour accéder à l'index
 
-let index =0;
 
   // Parcourez l'historique des notes et affichez-les
   this.noteHistory.forEach((note) => {
@@ -97,13 +106,16 @@ let index =0;
       // Si la note correspond à celle dans noteverif, affichez-la en vert
       $noteItem.classList.add("active");
       index++; // Passe à la prochaine note dans noteverif
+      console.log("index", index);
 
     }
     else {
-      index =0;
+      index = 0;
+      console.log("index", index);
     }
     $noteHistoryList.appendChild($noteItem);
   });
+  this.index = index; // Met à jour l'index de la note à vérifier
 };
 
 Application.prototype.update = function (note) {
