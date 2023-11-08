@@ -1,3 +1,10 @@
+const SerialPort = require('serialport');
+const Readline = require('@serialport/parser-readline');
+const port = new SerialPort('/dev/ttyACM0 (Arduino Uno)', { baudRate: 9600 }); // Remplacez 'COM3' par le port de votre Arduino
+
+let mistake = 0;
+
+
 const Application = function () {
   this.tracks = new Tracks(".tracks")
   console.log("tracks", this.tracks);
@@ -150,8 +157,17 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
     else {
       console.log("index", index);
       $notesVerifyList.appendChild($noteItem);
+      // Envoyer la valeur de la variable via le port série
+      mistake = 1;
+      port.write(mistake.toString(), (err) => {
+        if (err) {
+          return console.log('Error: ', err.message);
+        }
+        console.log('Variable value sent to Arduino');
+      });
 
     }
+    mistake = 0;
   });
   
 };
