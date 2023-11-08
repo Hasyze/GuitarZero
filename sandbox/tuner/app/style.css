@@ -16,6 +16,13 @@ html {
   flex-direction: row; /* Affichez les éléments horizontalement */
 }
 
+.note-verify-list {
+  display: flex;
+  flex-direction: column; /* Affichez les éléments horizontalement */
+  justify-content: flex-start; /* Alignez les éléments vers la droite */
+}
+
+
 .note-history-container h2 {
   text-align: center;
   font-size: 18px;
