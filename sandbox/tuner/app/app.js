@@ -1,6 +1,3 @@
-const SerialPort = require('serialport');
-const Readline = require('@serialport/parser-readline');
-const port = new SerialPort('/dev/ttyACM0 (Arduino Uno)', { baudRate: 9600 }); // Remplacez 'COM3' par le port de votre Arduino
 
 let mistake = 0;
 
@@ -51,6 +48,18 @@ Application.prototype.start = function () {
     self.tuner.init();
     self.frequencyData = new Uint8Array(self.tuner.analyser.frequencyBinCount);
   });
+// Add this inside the Application.prototype.start function
+const trackSelector = document.getElementById("trackSelector");
+
+trackSelector.addEventListener("change", function () {
+  const selectedTrackIndex = parseInt(trackSelector.value);
+  self.noteverif = self.tracks.tracks[selectedTrackIndex].chords;
+  console.log("Selected notes to verify:", self.noteverif);
+
+  // Reset the index and update the displayed notes
+  self.index = 0;
+  self.updateNoteVerif();
+});
 
   this.$a4.addEventListener("click", function () {
     swal
@@ -159,12 +168,7 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
       $notesVerifyList.appendChild($noteItem);
       // Envoyer la valeur de la variable via le port série
       mistake = 1;
-      port.write(mistake.toString(), (err) => {
-        if (err) {
-          return console.log('Error: ', err.message);
-        }
-        console.log('Variable value sent to Arduino');
-      });
+      
 
     }
     mistake = 0;

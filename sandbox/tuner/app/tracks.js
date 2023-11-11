@@ -3,7 +3,7 @@ lyrics = "I used to rule the world\nSeas would rise when I gave the word\nNow in
 title = "Viva la Vida"
 artist = "Coldplay"
 
-chords2 = ["C", "D", "G", "Em"]
+chords2 = ["D", "G", "C", "G"]
 lyrics2 = "Das Fenster öffnet sich nich' mehr\nUnd ich frag' mich, was ist hier passiert?\nWo ist all die Freiheit hin?\nIch fühl' mich wie im falschen Film"
 title2 = "Durch den Monsun"
 artist2 = "Tokio Hotel"
