@@ -3,9 +3,10 @@
  * @constructor
  */
 const Meter = function (selector) {
-  this.$root = document.querySelector(selector);
-  this.$pointer = this.$root.querySelector(".meter-pointer");
-  this.init();
+    //this.$root = document.querySelector(selector);
+    this.$root = document.querySelector(selector);
+    this.$pointer = this.$root.querySelector(".meter-pointer");
+    this.init();
 };
 
 Meter.prototype.init = function () {
@@ -24,5 +25,7 @@ Meter.prototype.init = function () {
  * @param {number} deg
  */
 Meter.prototype.update = function (deg) {
-  this.$pointer.style.transform = "rotate(" + deg + "deg)";
+    this.$pointer.style.transform = "rotate(" + deg + "deg)";
 };
+
+// module.exports = Meter;

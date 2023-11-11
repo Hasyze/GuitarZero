@@ -4,3 +4,5 @@ const Tab = function (chords, lyrics, title, artist) {
     this.title = title
     this.artist = artist
 }
+
+// module.exports = Tab;

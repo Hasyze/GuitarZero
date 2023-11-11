@@ -5,10 +5,12 @@
  * @constructor
  */
 const FrequencyBars = function (selector) {
-  this.$canvas = document.querySelector(selector);
-  this.$canvas.width = document.body.clientWidth;
-  this.$canvas.height = document.body.clientHeight / 2;
-  this.canvasContext = this.$canvas.getContext("2d");
+  
+    this.$canvas = document.querySelector(selector);
+    this.$canvas.width = document.body.clientWidth;
+    this.$canvas.height = document.body.clientHeight / 2;
+    this.canvasContext = this.$canvas.getContext("2d");
+
 };
 
 /**
@@ -28,3 +30,5 @@ FrequencyBars.prototype.update = function (data) {
     );
   }
 };
+
+// module.exports = FrequencyBars;

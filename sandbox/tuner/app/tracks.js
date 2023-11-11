@@ -1,3 +1,5 @@
+// const Tab = require('./tab'); // Adjust the path as needed
+
 chords = ["C", "D", "G", "Em"]
 lyrics = "I used to rule the world\nSeas would rise when I gave the word\nNow in the morning I sleep alone\nSweep the streets I used to own"
 title = "Viva la Vida"
@@ -13,4 +15,7 @@ const Tracks = function (selector) {
     this.tracks[0] = new Tab(chords, lyrics, title, artist)
     this.tracks[1] = new Tab(chords2, lyrics2, title2, artist2)
     this.$root = document.querySelector(selector)
+    
 }
+
+// module.exports = Tracks;
