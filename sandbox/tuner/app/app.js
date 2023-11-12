@@ -150,6 +150,7 @@ if ($notesVerifyList) {
 }
 
 let index = this.index; // Utilisez this.index pour accéder à l'index
+let allNotesActive = true; // Flag to check if all notes are active
 
 
   // Parcourez l'historique des notes et affichez-les
@@ -168,6 +169,7 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
       $notesVerifyList.appendChild($noteItem);
       // Envoyer la valeur de la variable via le port série
       mistake = 1;
+      allNotesActive = false;
       
 
     }

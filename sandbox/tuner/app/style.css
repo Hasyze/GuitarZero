@@ -25,8 +25,9 @@ html {
 .note-verify-container {
   display: flex;
   flex-direction: row; /* Display note items horizontally */
-  justify-content: flex-start; /* Align note items to the left */
+  justify-content: center; /* Center note items horizontally */
   align-items: center; /* Center note items vertically */
+  /
 }
 
 .note-history-container h2 {
