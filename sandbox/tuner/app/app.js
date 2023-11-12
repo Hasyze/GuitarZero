@@ -141,7 +141,7 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
 };
 
 Application.prototype.updateNoteVerif = function () {
-  const $notesVerifyList = document.getElementById("notes-verify-list");
+  const $notesVerifyList = document.querySelector(".note-verify-list");
 if ($notesVerifyList) {
   $notesVerifyList.innerHTML = ""; // Efface l'affichage actuel
   // Maintenant, vous pouvez ajouter de nouveaux éléments

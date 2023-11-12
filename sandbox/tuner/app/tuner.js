@@ -56,6 +56,7 @@ Tuner.prototype.initGetUserMedia = function () {
 
 Tuner.prototype.startRecord = function () {
   const self = this;
+  const MIN_AMPLITUDE = 0.80;
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then(function (stream) {
@@ -63,6 +64,11 @@ Tuner.prototype.startRecord = function () {
       self.analyser.connect(self.scriptProcessor);
       self.scriptProcessor.connect(self.audioContext.destination);
       self.scriptProcessor.addEventListener("audioprocess", function (event) {
+        const data = event.inputBuffer.getChannelData(0);
+        const amplitude = Math.max(...data.map(Math.abs));
+        if (amplitude < MIN_AMPLITUDE) {
+          return;
+        }
         const frequency = self.pitchDetector.do(
           event.inputBuffer.getChannelData(0)
         );

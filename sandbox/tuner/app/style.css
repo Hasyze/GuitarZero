@@ -18,10 +18,16 @@ html {
 
 .note-verify-list {
   display: flex;
-  flex-direction: column; /* Affichez les éléments horizontalement */
+  flex-direction: row; /* Affichez les éléments horizontalement */
   justify-content: flex-start; /* Alignez les éléments vers la droite */
 }
 
+.note-verify-container {
+  display: flex;
+  flex-direction: row; /* Display note items horizontally */
+  justify-content: flex-start; /* Align note items to the left */
+  align-items: center; /* Center note items vertically */
+}
 
 .note-history-container h2 {
   text-align: center;
