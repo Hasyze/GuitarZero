@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  
+<head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width,initial-scale=1,user-scalable=no"
     />
-    <title>Online Tuner</title>
+    <title>Guitar Zero</title>
     <link rel="stylesheet" href="style.css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">  
   </head>
+  
   <body>
+    
+    <button id="darkModeToggle">Dark Mode</button>
+
     <canvas class="frequency-bars"></canvas>
    
     
       <div class="note-history-container">
-        <h2>Note History</h2>
+        <h2>Notes jouées</h2>
         <div class="note-history-list">
         </div>
       </div>
@@ -38,11 +48,6 @@
   <option value="1">Track 2</option>
 </select>
 
-    <button id="resetButton">Recommencer</button>
-    <label class="auto">
-      Stop
-      <input type="checkbox" checked />
-    </label>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
     <script src="tuner.js"></script>
