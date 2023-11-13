@@ -144,7 +144,7 @@ Application.prototype.eteindreLED = function () {
 }
 
 Application.prototype.updateNoteVerif = function () {
-  const $notesVerifyList = document.getElementById("notes-verify-list");
+  const $notesVerifyList = document.querySelector(".note-verify-list");
 if ($notesVerifyList) {
   $notesVerifyList.innerHTML = ""; // Efface l'affichage actuel
   // Maintenant, vous pouvez ajouter de nouveaux éléments
@@ -153,6 +153,7 @@ if ($notesVerifyList) {
 }
 
 let index = this.index; // Utilisez this.index pour accéder à l'index
+let allNotesActive = true; // Flag to check if all notes are active
 
 
   // Parcourez l'historique des notes et affichez-les
@@ -172,7 +173,9 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
       // Envoyer la valeur de la variable via le port série
       mistake = 1;
       fetch('http://localhost:3000/api/led/on');
-      setTimeout(this.eteindreLED, 3000);
+      setTimeout(this.eteindreLED, 1000);
+      allNotesActive = false;
+      
 
     }
     mistake = 0;
