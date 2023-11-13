@@ -58,7 +58,7 @@ Tuner.prototype.initGetUserMedia = function () {
 
 Tuner.prototype.startRecord = function () {
   const self = this;
-  const MIN_AMPLITUDE = 0.2;
+  const MIN_AMPLITUDE = 0.7;
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then(function (stream) {

@@ -135,6 +135,11 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
       console.log("index", index);
 
     }
+    else if (this.noteverif[index-1] === note.name) {
+      // Si la note correspond à celle dans noteverif, affichez-la en vert
+      $noteItem.classList.add("active");
+      console.log("index", index);
+    }
     else {
       index = 0;
       console.log("index", index);
@@ -161,30 +166,32 @@ let index = this.index; // Utilisez this.index pour accéder à l'index
 let allNotesActive = true; // Flag to check if all notes are active
 
 
-  // Parcourez l'historique des notes et affichez-les
-  this.noteverif.forEach((note) => {
-    const $noteItem = document.createElement("div");
-    $noteItem.className = "note-item";
-    $noteItem.innerHTML = `<span>${note}</span> `;
-    if (this.noteverif[index] === note) {
-      // Si la note correspond à celle dans noteverif, affichez-la en vert
-      $noteItem.classList.add("active");
-      console.log("index", index);
-      $notesVerifyList.appendChild($noteItem);
-    }
-    else {
-      console.log("index", index);
-      $notesVerifyList.appendChild($noteItem);
-      // Envoyer la valeur de la variable via le port série
-      mistake = 1;
-      fetch('http://localhost:3000/api/led/on');
-      setTimeout(this.eteindreLED, 1000);
-      allNotesActive = false;
-      
-
-    }
-    mistake = 0;
-  });
+this.noteverif.forEach((note) => {
+  this.index = index; // Met à jour l'index de la note à vérifier
+  const $noteItem = document.createElement("div");
+  $noteItem.className = "note-item";
+  $noteItem.innerHTML = `<span>${note}</span> `;
+  if (this.noteverif[index] === note) {
+    // Si la note correspond à celle dans noteverif, affichez-la en vert
+    $noteItem.classList.add("active");
+    console.log("index", index);
+  }
+  else if (this.noteverif[index-1] === note) {
+    // Si la note correspond à celle dans noteverif, affichez-la en vert
+    //$noteItem.classList.add("active");
+    console.log("index", index);
+  }
+  else {
+    console.log("index", index);
+    // Envoyer la valeur de la variable via le port série
+    mistake = 1;
+    fetch('http://localhost:3000/api/led/on');
+    setTimeout(this.eteindreLED, 1000);
+    allNotesActive = false;
+  }
+  $notesVerifyList.appendChild($noteItem);
+  mistake = 0;
+});
   
 };
 
