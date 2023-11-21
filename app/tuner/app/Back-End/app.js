@@ -19,7 +19,6 @@ app.get('/api/led/off', (req, res) => {
 });
 
 board.on('ready', () => {
-  // Code Johnny-Five ici si nécessaire lors du démarrage de la carte
   console.log('Carte prête');
 });
 
